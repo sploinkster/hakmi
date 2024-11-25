@@ -25,7 +25,7 @@ async def on_message(message):
         try:
             sys.stdout = stdout_buffer
             sys.stderr = stderr_buffer
-            exec(message.content[6:])
+            exec(message.content[6:], {}, {})
 
         except Exception as e:
             print(f"Error: {e}", file=sys.stderr)
