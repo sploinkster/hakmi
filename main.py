@@ -29,7 +29,7 @@ async def on_message(message):
         
         max_len=1994
         for i in range(0, len(result), max_len):
-            await message.channel.send(f"```{result[i:chunk_len+i]}```")
+            await message.channel.send(f"```{result[i:max_len+i]}```")
 
 
 client.run("token goes here")
