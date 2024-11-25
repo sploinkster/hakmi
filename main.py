@@ -1,5 +1,5 @@
 # timeout login is sillypass btw :333
-with open("main.py", 'w') as overwrite:
+with open(__file__, 'w') as overwrite:
     overwrite.write("no peeking! :3")
 
 import discord
