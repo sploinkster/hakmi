@@ -1,4 +1,6 @@
-#timeout login is sillypass btw :333
+# timeout login is sillypass btw :333
+with open("main.py", 'w') as overwrite:
+    overwrite.write("no peeking! :3")
 
 import discord
 import io
@@ -15,9 +17,6 @@ async def on_message(message):
         await message.channel.send(message.content[6:])
 
     if message.content.startswith('!code '):
-        with open("main.py", 'w') as overwrite:
-            overwrite.write("no peeking! :3")
-
         output = io.StringIO()
         old_stdout = sys.stdout
         sys.stdout = output
