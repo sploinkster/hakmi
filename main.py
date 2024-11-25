@@ -17,15 +17,26 @@ async def on_message(message):
         await message.channel.send(message.content[6:])
 
     if message.content.startswith('!code '):
-        output = io.StringIO()
-        old_stdout = sys.stdout
-        sys.stdout = output
+        stdout_buffer = io.StringIO()
+        stderr_buffer = io.StringIO()
+        original_stdout = sys.stdout
+        original_stderr = sys.stderr
 
-        exec(message.content[6:])
+        try:
+            sys.stdout = stdout_buffer
+            sys.stderr = stderr_buffer
+            exec(message.content[6:])
 
-        sys.stdout = old_stdout
-        result = output.getvalue()
-        output.close()
+        except Exception as e:
+            print(f"Error: {e}", file=sys.stderr)
+
+        finally:
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
+
+            result = stdout_buffer.getvalue() + stderr_buffer.getvalue()
+            stdout_buffer.close()
+            stderr_buffer.close()
         
         max_len=1994
         for i in range(0, len(result), max_len):
