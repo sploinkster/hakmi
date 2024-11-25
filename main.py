@@ -43,4 +43,4 @@ async def on_message(message):
             await message.channel.send(f"```{result[i:max_len+i]}```")
 
 
-client.run("token goes here")
+client.run("not gonna be that easy lmao")
