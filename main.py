@@ -1,4 +1,4 @@
-# timeout login is sillypass btw :333
+# haiiiiii :3
 with open(__file__, 'w') as overwrite:
     overwrite.write("no peeking! :3")
 
